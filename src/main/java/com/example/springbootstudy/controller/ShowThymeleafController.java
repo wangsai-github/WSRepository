@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
  * @Title:
  * @Description:
@@ -16,9 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/StudentInfoCon")
 public class ShowThymeleafController {
     @GetMapping(value = "/login")
-    public ModelAndView login(){
-        ModelAndView login = new ModelAndView();
-        login.setViewName("Login");
-        return login;
+//    public ModelAndView login() {
+//        ModelAndView login = new ModelAndView();
+//        login.setViewName("Login");
+//        return login;
+//    }
+    public String login(){
+        return "Login";
     }
 }

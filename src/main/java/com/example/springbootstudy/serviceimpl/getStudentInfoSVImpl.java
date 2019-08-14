@@ -3,6 +3,7 @@ package com.example.springbootstudy.serviceimpl;
 import com.example.springbootstudy.beans.Student;
 import com.example.springbootstudy.dao.StudentInfoDao;
 import com.example.springbootstudy.iservice.IStudentInfo;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 public class getStudentInfoSVImpl implements IStudentInfo {
     //注入数据操作层相关操作方法
     @Autowired
+//    @Reference
     StudentInfoDao studentInfoDao;
     @Override
     public Student getStudentInfo(int stuId) {

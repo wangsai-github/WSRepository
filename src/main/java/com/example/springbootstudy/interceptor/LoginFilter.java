@@ -1,5 +1,7 @@
 package com.example.springbootstudy.interceptor;
 
+import org.springframework.stereotype.Component;
+
 import javax.servlet.*;
 import javax.servlet.FilterConfig;
 import javax.servlet.annotation.WebFilter;
@@ -13,8 +15,8 @@ import java.io.IOException;
  * @author: wangsai
  * @date 2019/8/12 10:45
  */
-
-//@WebFilter(filterName = "loginFilter",urlPatterns = "/**")
+//@Component
+@WebFilter(filterName = "loginFilter",urlPatterns = "/*")
 public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
@@ -27,17 +29,16 @@ public class LoginFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         String requestURI = httpServletRequest.getRequestURI();
         System.out.println("-----------过滤器请求地址------"+requestURI);
-        if(requestURI.contains("/Login.html")||requestURI.contains("/StudentInfoCon/login")){
+        /**
+         * 放行登录时的请求路径的同时也需要放行登录成功后请求时的接口路径
+         */
+        if(requestURI.contains("/StudentInfo/getStudentInfo")||requestURI.contains("/StudentInfoCon/login")){
+            //放行此路径下的请求
             filterChain.doFilter(httpServletRequest,httpServletResponse);
         }else{
-//            Object object = httpServletRequest.getSession().getAttribute("");
-//            if(object == null){
+               //如果有需要可以在此处设置Session，获取对象是否为空来控制页面跳转路径
             System.out.println("--------重定向-----------");
-                httpServletResponse.sendRedirect("/StudentInfoCon/login");
-//                return;
-//            }else {
-//                filterChain.doFilter(httpServletRequest,httpServletResponse);
-//            }
+            httpServletResponse.sendRedirect("/StudentInfoCon/login");
         }
     }
 

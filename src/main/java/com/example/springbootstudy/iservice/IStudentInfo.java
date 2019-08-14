@@ -9,6 +9,11 @@ import com.example.springbootstudy.beans.Student;
  * @date 2019/8/5 12:41
  */
 public interface IStudentInfo {
+    /**
+     *
+     * @param stuId
+     * @return
+     */
     Student getStudentInfo(int stuId);
 }
 

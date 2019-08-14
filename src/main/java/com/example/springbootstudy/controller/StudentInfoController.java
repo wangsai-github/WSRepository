@@ -6,6 +6,9 @@ import com.example.springbootstudy.iservice.IStudentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * @Title:
  * @Description:
@@ -23,7 +26,7 @@ public class StudentInfoController {
 //    public Student getStudentInfo(@PathVariable(value = "stuId") int stuId){
 //        return studentInfoSVimpl.getStudentInfo(stuId);
 //    }
-@PostMapping(value = "/getStudentInfo")
+@PostMapping (value = "/getStudentInfo")
 public String getStudentInfo(@RequestParam(value = "studentId") int stuId,@RequestParam(value = "passWord")String passWord){
     Student student = new Student();
     student = studentInfoSVimpl.getStudentInfo(stuId);
@@ -33,5 +36,9 @@ public String getStudentInfo(@RequestParam(value = "studentId") int stuId,@Reque
     }else{
         return "登陆失败";
     }
+}
+@GetMapping(value = "/test")
+    public String test(){
+    return "HelloWord";
 }
 }
